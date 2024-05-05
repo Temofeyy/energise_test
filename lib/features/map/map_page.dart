@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:public_ip_address/public_ip_address.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shimmer/shimmer.dart';
 
 class MapProvider extends ChangeNotifier {
   MapProvider() {
@@ -38,7 +37,7 @@ class MapProvider extends ChangeNotifier {
     }
     _info = cachedInfo;
     isLoading = false;
-    // notifyListeners();
+    notifyListeners();
   }
 
   Future<String> _getIp() async => IpAddress().getIp();

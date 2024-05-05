@@ -5,6 +5,9 @@
   "pull_to_refresh" : "Pull to refresh",
   "release_to_refresh" : "Release to Refresh",
   "loading": "Loading...",
-  "refresh_completed": "Refresh Completed"
-
+  "refresh_completed": "Refresh Completed",
+  "buttons": "Buttons",
+  "rate_app": "Rate App",
+  "share_app": "Share App",
+  "contact_us": "Contact Us"
 }

@@ -5,5 +5,9 @@
   "pull_to_refresh" : "Zum Aktualisieren ziehen",
   "release_to_refresh" : "Zum Aktualisieren freigeben",
   "loading": "Wird geladen...",
-  "refresh_completed": "Aktualisierung abgeschlossen"
+  "refresh_completed": "Aktualisierung abgeschlossen",
+  "buttons": "Tasten",
+  "rate_app": "App bewerten",
+  "share_app": "App teilen",
+  "contact_us": "Kontaktieren Sie uns"
 }
