@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:public_ip_address/public_ip_address.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class MapProvider extends ChangeNotifier {
   MapProvider() {
     unawaited(_init());
@@ -30,7 +32,7 @@ class MapProvider extends ChangeNotifier {
   Future<void> _init() async {
     final cachedInfo = await Storage.tryRetrieveLocationInfo();
     if (cachedInfo == null) {
-      await reload();
+      await reload('en');
       isLoading = false;
       notifyListeners();
       return;
@@ -42,13 +44,13 @@ class MapProvider extends ChangeNotifier {
 
   Future<String> _getIp() async => IpAddress().getIp();
 
-  Future<IpAPIResponse?> _loadInfoByIp(String ip) async {
-    return CustomGetIt.get<API>()?.infoByIp(ip);
+  Future<IpAPIResponse?> _loadInfoByIp(String ip, String lang) async {
+    return CustomGetIt.get<API>()?.infoByIp(ip, lang);
   }
 
-  Future<void> reload() async {
+  Future<void> reload(String lang) async {
     final ip = await _getIp();
-    final fetchedInfo = await _loadInfoByIp(ip);
+    final fetchedInfo = await _loadInfoByIp(ip, lang);
     if (fetchedInfo == null) {
       _error = 'Unknown Error';
       notifyListeners();
@@ -71,8 +73,10 @@ class _MapPageState extends State<MapPage> {
   final _refreshController = RefreshController(initialRefresh: true);
 
   Future<void> reloadWrapper([bool isButton = false]) async {
+    final lang = Localizations.localeOf(context).languageCode;
+    print(lang);
     if (isButton) await _refreshController.requestRefresh();
-    await provider.reload();
+    await provider.reload(lang);
     _refreshController.refreshCompleted();
   }
 

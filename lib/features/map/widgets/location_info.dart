@@ -1,4 +1,5 @@
 import 'package:energise_test/api/models/response/ip_api_response.dart';
+import 'package:energise_test/ext.dart';
 import 'package:flutter/material.dart';
 
 class LocationInfo extends StatelessWidget {
@@ -12,21 +13,33 @@ class LocationInfo extends StatelessWidget {
       children: [
         ListTile(title: const Text('IP:'), subtitle: Text(info.query)),
         ListTile(
-            title: const Text('Country:'),
-            subtitle: Text('${info.country} ${info.countryCode}')),
-        ListTile(title: const Text('Region'), subtitle: Text(info.region)),
+          title: Text(context.loc.country),
+          subtitle: Text('${info.country} ${info.countryCode}'),
+        ),
+        ListTile(title: Text(context.loc.region), subtitle: Text(info.region)),
         ListTile(
-            title: const Text('Region Name:'), subtitle: Text(info.regionName)),
-        ListTile(title: const Text('City:'), subtitle: Text(info.city)),
-        ListTile(title: const Text('ZIP:'), subtitle: Text(info.zip)),
+            title: Text(context.loc.region_name),
+            subtitle: Text(info.regionName)),
+        ListTile(title: Text(context.loc.city), subtitle: Text(info.city)),
+        ListTile(title: Text(context.loc.zip), subtitle: Text(info.zip)),
         ListTile(
-            title: const Text('LAT:'), subtitle: Text(info.lat.toString())),
+          title: Text(context.loc.lat),
+          subtitle: Text(info.lat.toString()),
+        ),
         ListTile(
-            title: const Text('LON:'), subtitle: Text(info.lon.toString())),
-        ListTile(title: const Text('TimeZone:'), subtitle: Text(info.timezone)),
-        ListTile(title: const Text('isp:'), subtitle: Text(info.isp)),
-        ListTile(title: const Text('Organization:'), subtitle: Text(info.org)),
-        ListTile(title: const Text('as:'), subtitle: Text(info.as)),
+          title: Text(context.loc.lon),
+          subtitle: Text(info.lon.toString()),
+        ),
+        ListTile(
+          title: Text(context.loc.timezone),
+          subtitle: Text(info.timezone),
+        ),
+        ListTile(title: Text(context.loc.isp), subtitle: Text(info.isp)),
+        ListTile(
+          title: Text(context.loc.organization),
+          subtitle: Text(info.org),
+        ),
+        ListTile(title: Text(context.loc.as), subtitle: Text(info.as)),
       ],
     );
   }

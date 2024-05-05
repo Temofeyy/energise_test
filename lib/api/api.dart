@@ -11,5 +11,8 @@ abstract class API {
   factory API(Dio dio, {String baseUrl}) = _API;
 
   @GET(_GET_LOCATION_BY_IP + '/{ip}')
-  Future<IpAPIResponse> infoByIp(@Path() String ip);
+  Future<IpAPIResponse> infoByIp(
+    @Path() String ip,
+    @Query('lang') String lang,
+  );
 }

@@ -1,11 +1,26 @@
 {
   "app_title": "Testen Sie die Energize-App",
   "set": "Satz",
+
   "reload": "Neu laden",
   "pull_to_refresh" : "Zum Aktualisieren ziehen",
   "release_to_refresh" : "Zum Aktualisieren freigeben",
   "loading": "Wird geladen...",
   "refresh_completed": "Aktualisierung abgeschlossen",
+  "country": "Land",
+  "region": "Region",
+  "region_name": "Regionsname",
+  "city": "Stadt",
+  "zip": "PLZ",
+  "lat": "LAT",
+  "lon": "LON",
+  "timezone": "Time Zone",
+  "isp": "isp",
+  "organization": "Organisation",
+  "as": "as",
+
+
+
   "buttons": "Tasten",
   "rate_app": "App bewerten",
   "share_app": "App teilen",
