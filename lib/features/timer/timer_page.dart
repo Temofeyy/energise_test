@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:energise_test/ext.dart';
 import 'package:energise_test/features/timer/widgets/timer_control_button.dart';
 import 'package:energise_test/features/timer/widgets/timer_status_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -71,9 +72,9 @@ class _TimerPageState extends State<TimerPage> {
       context: context,
       backgroundColor: Colors.black,
       showDragHandle: true,
-      builder: (ctx) {
+      builder: (_) {
         return LayoutBuilder(
-          builder: (_, constraints) {
+          builder: (ctx, constraints) {
             return SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -90,9 +91,9 @@ class _TimerPageState extends State<TimerPage> {
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: FilledButton(
                       onPressed: () => Navigator.of(ctx).pop(duration),
-                      child: const Text("Set"),
+                      child: Text(ctx.loc.set),
                     ),
-                  ), //TODO: loc
+                  ),
                 ],
               ),
             );

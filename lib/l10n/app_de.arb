@@ -1,3 +1,9 @@
 {
-  "app_title": "Testen Sie die Energize-App"
+  "app_title": "Testen Sie die Energize-App",
+  "set": "Satz",
+  "reload": "Neu laden",
+  "pull_to_refresh" : "Zum Aktualisieren ziehen",
+  "release_to_refresh" : "Zum Aktualisieren freigeben",
+  "loading": "Wird geladen...",
+  "refresh_completed": "Aktualisierung abgeschlossen"
 }

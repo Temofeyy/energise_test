@@ -13,11 +13,30 @@ dependencies:
     sdk: flutter
 
   intl: ^0.18.1
+
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+
+  #animaiton
   animations: ^2.0.11
   avatar_glow: ^3.0.1
+  pull_to_refresh: ^2.0.0
+  liquid_pull_to_refresh: ^3.0.1
+  shimmer: ^3.0.0
 
+  #state_managers
   provider: ^6.1.2
 
+  #network
+  dio: ^5.4.3+1
+  public_ip_address: ^1.2.0
+
+  #storage
+  shared_preferences: ^2.2.3
+
+  #gen
+  retrofit: ^4.1.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
@@ -25,6 +44,9 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.4.9
   flutter_gen_runner: ^5.4.0
+  json_serializable: ^6.8.0
+  retrofit_generator: ^8.1.0
+
 
 
 

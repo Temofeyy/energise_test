@@ -1,9 +1,14 @@
 import 'package:energise_test/app/app.dart';
+import 'package:energise_test/utils/custom_get_it.dart';
+import 'package:energise_test/utils/storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CustomGetIt.init();
+  await Storage.init();
   runApp(const MainApp());
 }
 
@@ -33,7 +38,7 @@ class _MainAppState extends State<MainApp> {
       theme: ThemeData(
         brightness: Brightness.dark,
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontSize: 40),
+          bodyMedium: TextStyle(fontSize: 16),
         ),
         appBarTheme: const AppBarTheme(
           color: Colors.black,
@@ -54,7 +59,6 @@ class _MainAppState extends State<MainApp> {
           labelPadding: EdgeInsets.all(16),
         ),
         cupertinoOverrideTheme: const NoDefaultCupertinoThemeData(
-          primaryColor: Colors.purple,
           brightness: Brightness.dark,
         ),
       ),

@@ -1,3 +1,10 @@
 {
-  "app_title": "Test Energise App"
+  "app_title": "Test Energise App",
+  "set": "Set",
+  "reload": "Reload",
+  "pull_to_refresh" : "Pull to refresh",
+  "release_to_refresh" : "Release to Refresh",
+  "loading": "Loading...",
+  "refresh_completed": "Refresh Completed"
+
 }
