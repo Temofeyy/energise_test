@@ -127,22 +127,3 @@ class _MapPageState extends State<MapPage> {
     );
   }
 }
-
-class LoadingIndicator extends StatelessWidget {
-  const LoadingIndicator({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircularProgressIndicator(),
-          SizedBox(width: 10),
-          Text('Loading...'),
-        ],
-      ),
-    );
-  }
-}
