@@ -70,23 +70,33 @@ class _TimerPageState extends State<TimerPage> {
     return showModalBottomSheet<Duration?>(
       context: context,
       backgroundColor: Colors.black,
+      showDragHandle: true,
       builder: (ctx) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CupertinoTimerPicker(
-              initialTimerDuration: _timer.duration,
-              onTimerDurationChanged: (d) => duration = d,
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 40, 16, 20),
-              child: FilledButton(
-                onPressed: () => Navigator.of(ctx).pop(duration),
-                child: const Text("Set"),
+        return LayoutBuilder(
+          builder: (_, constraints) {
+            return SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    height: constraints.maxHeight * 0.5,
+                    child: CupertinoTimerPicker(
+                      initialTimerDuration: _timer.duration,
+                      onTimerDurationChanged: (d) => duration = d,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: FilledButton(
+                      onPressed: () => Navigator.of(ctx).pop(duration),
+                      child: const Text("Set"),
+                    ),
+                  ), //TODO: loc
+                ],
               ),
-            ), //TODO: loc
-          ],
+            );
+          },
         );
       },
     );
@@ -98,23 +108,48 @@ class _TimerPageState extends State<TimerPage> {
       value: _timer,
       child: Consumer<TimerProvider>(
         builder: (_, timer, __) {
-          return Column(
-            children: [
-              const SizedBox(height: 80),
-              TimerStatusButton(
-                isTimerStarted: timer.isTimerStarted,
-                onPickDuration: _pickDuration,
-                remainingDuration: _timer.remainingDuration,
-              ),
-              const Spacer(),
-              TimerControlButton(
-                enable: timer.isDurationPicked,
-                isTimerStarted: timer.isTimerStarted,
-                onStart: timer.startTimer,
-                onPause: timer.stopTimer,
-              ),
-              const SizedBox(height: 20),
-            ],
+          return OrientationBuilder(
+            builder: (_, orientation) {
+              return orientation == Orientation.portrait
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(height: 80),
+                        TimerStatusButton(
+                          isTimerStarted: timer.isTimerStarted,
+                          onPickDuration: _pickDuration,
+                          remainingDuration: _timer.remainingDuration,
+                        ),
+                        const Spacer(),
+                        TimerControlButton(
+                          enable: timer.isDurationPicked,
+                          isTimerStarted: timer.isTimerStarted,
+                          onStart: timer.startTimer,
+                          onPause: timer.stopTimer,
+                        ),
+                        const SizedBox(height: 40),
+                      ],
+                    )
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        TimerStatusButton(
+                          isTimerStarted: timer.isTimerStarted,
+                          onPickDuration: _pickDuration,
+                          remainingDuration: _timer.remainingDuration,
+                        ),
+                        Positioned(
+                          right: 100,
+                          child: TimerControlButton(
+                            enable: timer.isDurationPicked,
+                            isTimerStarted: timer.isTimerStarted,
+                            onStart: timer.startTimer,
+                            onPause: timer.stopTimer,
+                          ),
+                        ),
+                      ],
+                    );
+            },
           );
         },
       ),
